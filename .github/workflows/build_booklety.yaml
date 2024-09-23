@@ -1,0 +1,23 @@
+name: Trigger Build & Deploy for all booklet webapps
+
+on:
+  workflow_dispatch:
+    inputs:
+      event_type:
+        description: 'Type of event to trigger'
+        required: true
+        default: 'build_booklet'
+
+jobs:
+  trigger_actions:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        repo: ['SchneiderGeo-Booklet-Guibo', 'SchneiderGeo-Booklet-Eurobike', 'SchneiderGeo-Booklet-Eurohike']  # List your repositories here
+    steps:
+      - name: Trigger repository event
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.ORG_PAT }}
+          repository: ${{ github.repository_owner }}/${{ matrix.repo }}
+          event-type: ${{ github.event.inputs.event_type }}
