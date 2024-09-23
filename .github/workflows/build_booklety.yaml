@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        repo: ['SchneiderGeo-Booklet-Guibo', 'SchneiderGeo-Booklet-Eurobike', 'SchneiderGeo-Booklet-Eurohike']  # List your repositories here
+        repo: ['Schneider-Geo-Booklet-Guibo', 'Schneider-Geo-Booklet-Eurobike', 'Schneider-Geo-Booklet-Eurohike']  # List your repositories here
     steps:
       - name: Trigger repository event
         uses: peter-evans/repository-dispatch@v2
