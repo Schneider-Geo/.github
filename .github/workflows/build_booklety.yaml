@@ -17,7 +17,7 @@ jobs:
     steps:
       - name: Trigger repository event
         uses: peter-evans/repository-dispatch@v2
-        with:i
+        with:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository_owner }}/${{ matrix.repo }}
           event-type: ${{ github.event.inputs.event_type }}
